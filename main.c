@@ -33,6 +33,8 @@ void main()
   }
   printf("Numero di elementi nello stack dopo gli inserimenti: %d\n\n", stkSize(stack));
 
+/*
+
   for(uint i = 0; i < 10; i++)
   {
     elemy = (int *) stkTopNPop(stack);
@@ -40,7 +42,7 @@ void main()
     free(elemy);
   }
   printf("Numero di elementi nello stack dopo le estrazioni: %d\n\n", stkSize(stack));
-/*
+
   for(uint i = 0; i < 15; i++)
   {
     *elemx = rndNum(0, 100);

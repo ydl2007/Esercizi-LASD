@@ -2,41 +2,52 @@
 #include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /* ************************************************************************** */
 
 StackObject* stkConstruct (void) {
 
-	StackObject *stack = (StackObject*) malloc (sizeof (StackObject));
-	stack -> data = (int*) calloc (MAX_SIZE, sizeof (int));
-	stack -> top = 0;
-	stack -> capacity = MAX_SIZE;
-	return stack;
+	StackObject *obj = (StackObject*) malloc (sizeof (StackObject));
+	if (!obj){
+		obj -> Elements = NULL;
+		obj -> index = 0;
+		obj -> dimensioni = 0;
+	}
+	return obj;
 }
 
-int stkPush (StackObject *stack, int *element) {
 
-	if (stack -> top < MAX_SIZE){
+int stkPush (StackObject **head, char *val) {
 
-		*(stack -> data + stack -> top) = element;
-		stack -> top++;
-		return 0;
-	} else {
-		printf("Stack pieno!\n");
-		return -1;
+	StackObject *obj = (StackObject*) malloc (sizeof (StackObject));
+	if (obj) {
+		obj -> Elements = val;
+		obj -> index++;
+		obj -> dimensioni++;
+		*head = obj;
 	}
 }
-
+/*
 int stkSize (StackObject *stack) {
 
 	return stack -> top-1;
 }
 
-int stkTopNPop (StackObject *stack) { 
+int* stkTopNPop (StackObject *stack) { 
+	printf("stack top: %d\n", stack -> top); //DBG
 
-	int ret = *stack -> data;
-	free (stack -> data);
-	stack -> top--;
-	return ret;
+	if (stack -> top >= 0){
+		int *ret = (int*) malloc (sizeof (int));
+		printf("stack value: %d\n", *stack -> data); //DBG
+
+		memcpy ((stack -> data + stack -> top), &ret, sizeof (int*));
+		printf("return value: %d\n", *ret); //DBG
+
+		free (stack -> data);
+		stack -> top--;
+		return ret;
+	} else return -1;
 }
 
 // ...
+*/
