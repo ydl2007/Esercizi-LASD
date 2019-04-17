@@ -25,7 +25,7 @@ StackObject* stkConstruct (void);
 //int stkPop(StackObject *stack);
 // type stkTopNPop(arguments);
 //int stkPush (StackObject **head, char *val);
-//int stkSize (StackObject *stack);
+int stkSize (StackObject *stack);
 
 // type stkClone(arguments);
 // type stkEqual(arguments);

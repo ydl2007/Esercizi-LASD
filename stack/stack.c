@@ -27,11 +27,13 @@ int stkPush (StackObject **head, char *val) {
 		*head = obj;
 	}
 }
-/*
+
 int stkSize (StackObject *stack) {
 
-	return stack -> top-1;
+	return stack -> dimensioni;
 }
+
+/*
 
 int* stkTopNPop (StackObject *stack) { 
 	printf("stack top: %d\n", stack -> top); //DBG
