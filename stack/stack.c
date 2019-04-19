@@ -7,25 +7,25 @@
 
 StackObject* stkConstruct (void) {
 
-	StackObject *obj = (StackObject*) malloc (sizeof (StackObject));
-	if (!obj){
+	StackObject *obj = (StackObject*) malloc (sizeof (StackObject*));
+
+	if (obj) {
 		obj -> Elements = NULL;
 		obj -> index = 0;
 		obj -> dimensioni = 0;
+		return obj;
 	}
-	return obj;
 }
 
 
-int stkPush (StackObject **head, char *val) {
+void stkPush (StackObject *head, char *val) {
 
-	StackObject *obj = (StackObject*) malloc (sizeof (StackObject));
-	if (obj) {
-		obj -> Elements = val;
-		obj -> index++;
-		obj -> dimensioni++;
-		*head = obj;
-	}
+		head -> Elements = (char*) realloc (head -> Elements, sizeof (char) * (head->dimensioni+1));
+		head -> Elements = head -> Elements + sizeof (char);	
+
+		head -> dimensioni++;
+		head -> Elements = val;
+		head -> index++;
 }
 
 int stkSize (StackObject *stack) {

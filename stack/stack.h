@@ -18,13 +18,13 @@ typedef struct StackObject
 
 /* ************************************************************************** */
 
-StackObject* stkConstruct (void);
+StackObject * stkConstruct (void);
 //int stkDestruct(StackObject *stack);
 
 //int stkEmpty(StackObject *stack);
 //int stkPop(StackObject *stack);
 // type stkTopNPop(arguments);
-//int stkPush (StackObject **head, char *val);
+void stkPush (StackObject *head, char *val);
 int stkSize (StackObject *stack);
 
 // type stkClone(arguments);
