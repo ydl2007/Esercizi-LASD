@@ -12,25 +12,29 @@ StackObject* stkConstruct (void) {
 	if (obj) {
 		obj -> Elements = NULL;
 		obj -> index = 0;
-		obj -> dimensioni = 0;
+		obj -> size = 0;
 		return obj;
 	}
 }
 
 
-void stkPush (StackObject *head, char *val) {
+void stkPush (StackObject *stack, char *val) {
 
-		head -> Elements = (char*) realloc (head -> Elements, sizeof (char) * (head->dimensioni+1));
-		head -> Elements = head -> Elements + sizeof (char);	
+		int pointerOffset = stack->size * sizeof(char*);
+		
+		if (stack->size > 0){
+			stack -> index++;
+		} 
 
-		head -> dimensioni++;
-		head -> Elements = val;
-		head -> index++;
+		stack -> size++;
+		stack -> Elements = (char**) realloc (stack->Elements, pointerOffset);
+		char** cur = stack -> Elements + pointerOffset;
+		*cur = val;
 }
 
 int stkSize (StackObject *stack) {
 
-	return stack -> dimensioni;
+	return stack -> size;
 }
 
 /*

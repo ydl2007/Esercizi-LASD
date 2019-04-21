@@ -13,7 +13,7 @@ typedef struct StackObject
 {
 	char **Elements;
 	uint index;
-	uint dimensioni;
+	uint size;
 } StackObject;
 
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ StackObject * stkConstruct (void);
 //int stkEmpty(StackObject *stack);
 //int stkPop(StackObject *stack);
 // type stkTopNPop(arguments);
-void stkPush (StackObject *head, char *val);
+void stkPush (StackObject *stack, char *val);
 int stkSize (StackObject *stack);
 
 // type stkClone(arguments);
