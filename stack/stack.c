@@ -20,16 +20,18 @@ StackObject* stkConstruct (void) {
 
 void stkPush (StackObject *stack, char *val) {
 
-		int pointerOffset = stack->size * sizeof(char*);
 		
 		if (stack->size > 0){
 			stack -> index++;
-		} 
+		} else {
+			stack -> Elements = (char**) malloc (sizeof (char*));
+		}
 
 		stack -> size++;
+		int pointerOffset = stack->size * sizeof(char*);
+
 		stack -> Elements = (char**) realloc (stack->Elements, pointerOffset);
-		char** cur = stack -> Elements + pointerOffset;
-		*cur = val;
+		stack -> Elements [stack->index] = val;
 }
 
 int stkSize (StackObject *stack) {
@@ -37,23 +39,17 @@ int stkSize (StackObject *stack) {
 	return stack -> size;
 }
 
-/*
 
 int* stkTopNPop (StackObject *stack) { 
-	printf("stack top: %d\n", stack -> top); //DBG
 
-	if (stack -> top >= 0){
-		int *ret = (int*) malloc (sizeof (int));
-		printf("stack value: %d\n", *stack -> data); //DBG
+	char* ret = (char*) malloc (sizeof(char*));
 
-		memcpy ((stack -> data + stack -> top), &ret, sizeof (int*));
-		printf("return value: %d\n", *ret); //DBG
-
-		free (stack -> data);
-		stack -> top--;
-		return ret;
-	} else return -1;
+	ret = stack->Elements[stack->index];
+	stack->size--;
+	stack->index--;
+	return ret;
 }
+/*
 
 // ...
 */

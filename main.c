@@ -33,7 +33,6 @@ void main()
   }
   printf("Numero di elementi nello stack dopo gli inserimenti: %d\n\n", stkSize(stack));
 
-/*
 
   for(uint i = 0; i < 10; i++)
   {
@@ -43,6 +42,7 @@ void main()
   }
   printf("Numero di elementi nello stack dopo le estrazioni: %d\n\n", stkSize(stack));
 
+
   for(uint i = 0; i < 15; i++)
   {
     *elemx = rndNum(0, 100);
@@ -50,7 +50,7 @@ void main()
     stkPush(stack, elemx);
   }
   printf("Numero di elementi nello stack dopo gli inserimenti: %d\n\n", stkSize(stack));
-
+/*
   elemy = (int *) stkTop(stack);
   printf("Rimozione della testa dello stack dopo gli inserimenti: %d\n\n", *elemy);
   stkPop(stack);
